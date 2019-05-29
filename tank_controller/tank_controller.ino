@@ -277,20 +277,6 @@ int DampenAtNeutral(int pwmValue, int neutralValue)
   return pwmValue;
 }
 
-int DampenThrottleAtNeutral(int pwmValue)
-{  
-  // Prevents jitter around the servo neutral point
-  if ((pwmValue > THROTTLE_NEUTRAL) && ((pwmValue - THROTTLE_NEUTRAL) < SERVO_MIDPOINT_TOLERANCE)) {
-    return THROTTLE_NEUTRAL;
-  }
-  
-  if ((pwmValue < THROTTLE_NEUTRAL) && ((THROTTLE_NEUTRAL - pwmValue) < SERVO_MIDPOINT_TOLERANCE)) {
-    return THROTTLE_NEUTRAL;
-  }
-
-  return pwmValue;
-}
-
 void setup()
 {
   bool ThrottleTriggered = false;   // Used to check if throttle signal is received
